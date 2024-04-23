@@ -21,7 +21,7 @@ namespace WebApi.Services
               
                 if (autor == null)
                 {
-                    resposta.Mensagem = "Vamos ver agora";
+                    resposta.Mensagem = "Nenhum autor encontrado";
                     return resposta;
                 }
 
