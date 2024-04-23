@@ -42,15 +42,16 @@ namespace WebApi.Services
            ResponseModel<AutorModel> resposta = new ResponseModel<AutorModel>();  
             try
             {
-                var autores = await _context.Autores.FirstOrDefaultAsync(a => a.Id == idLivro);
+                var livro = await _context.Livros.Include(a => a.Autor).
+                    FirstOrDefaultAsync(x => x.Id == idLivro);
 
 
-                if (autores == null)
+                if (livro == null)
                 {
                     resposta.Mensagem = "Autor não localizado";
                     return resposta;
                 }
-                resposta.Dados = autores;
+                resposta.Dados = livro.Autor;
                 resposta.Mensagem = "Autor encontrado com sucesso";
                 return resposta;
             }
