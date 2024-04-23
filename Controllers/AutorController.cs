@@ -51,5 +51,12 @@ namespace WebApi.Controllers
             return Ok(autor);
         }
 
+        [HttpDelete("ExcluirAutor/{autorId}")]
+        public async Task<ActionResult<ResponseModel<AutorModel>>> ExcluirAutor(int autorId)
+        {
+            var autor = await _autorInterface.ExcluirAutor(autorId);
+            return Ok(autor);
+        }
+
     }
 }

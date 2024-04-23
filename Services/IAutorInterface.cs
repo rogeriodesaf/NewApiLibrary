@@ -13,5 +13,7 @@ namespace WebApi.Services
         Task<ResponseModel<List<AutorModel>>> CriarAutor(AutorCriacaoDto autorCriacaoDto);
 
         Task<ResponseModel<List<AutorModel>>> EditarAutor(AutorEdicaoDto autorEdicaoDto);
+
+        Task<ResponseModel<List<AutorModel>>> ExcluirAutor(int idAutor);  
     }
 }
