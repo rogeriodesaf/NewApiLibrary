@@ -11,5 +11,7 @@ namespace WebApi.Services
 
         Task<ResponseModel<AutorModel>> BuscarAutorPorIdLivro(int idLivro);
         Task<ResponseModel<List<AutorModel>>> CriarAutor(AutorCriacaoDto autorCriacaoDto);
+
+        Task<ResponseModel<List<AutorModel>>> EditarAutor(AutorEdicaoDto autorEdicaoDto);
     }
 }

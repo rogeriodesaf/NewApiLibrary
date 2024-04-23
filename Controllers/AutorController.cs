@@ -14,7 +14,7 @@ namespace WebApi.Controllers
         public AutorController(IAutorInterface autorInterface)
         {
             _autorInterface = autorInterface;
-        }   
+        }
 
         [HttpGet("ListarAutores")]
         public async Task<ActionResult<ResponseModel<List<AutorModel>>>> ListarAutores()
@@ -43,5 +43,13 @@ namespace WebApi.Controllers
             var autores = await _autorInterface.CriarAutor(autorCriacaoDto);
             return Ok(autores);
         }
+
+        [HttpPut("EditarAutor")]
+        public async Task<ActionResult<ResponseModel<AutorModel>>> EditarAutor(AutorEdicaoDto autorEdicaoDto)
+        {
+            var autor = await _autorInterface.EditarAutor(autorEdicaoDto);
+            return Ok(autor);
+        }
+
     }
 }
