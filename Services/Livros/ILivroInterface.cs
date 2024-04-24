@@ -9,7 +9,7 @@ namespace WebApi.Services.Livros
 
         Task<ResponseModel<List<LivroModel>>> BuscarLivroPorId(int idLivro);
 
-        Task<ResponseModel<List<LivroModel>>> BuscarAutorLivroPorId(int autorId);
+        Task<ResponseModel<List<LivroModel>>> BuscarLivroPorIdAutor(int idAutor);
 
         Task<ResponseModel<List<LivroModel>>> CriarLivro(LivroCriacaoDto livroCriacaoDto);
 

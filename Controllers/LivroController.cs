@@ -31,5 +31,12 @@ namespace WebApi.Controllers
 
 
         }
+
+        [HttpGet("BuscarLivroPorIdAutor/{idAutor}")]
+        public async Task<ActionResult<ResponseModel<LivroModel>>> BuscarLivroPorIdAutor(int idAutor)
+        {
+            var livro = await _livrointerface.BuscarLivroPorIdAutor(idAutor);
+            return Ok(livro);
+        }
     }
 }

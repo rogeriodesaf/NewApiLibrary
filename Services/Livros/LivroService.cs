@@ -12,9 +12,32 @@ namespace WebApi.Services.Livros
         {
             _context = context;
         }
-        public Task<ResponseModel<List<LivroModel>>> BuscarAutorLivroPorId(int autorId)
+        public async Task<ResponseModel<List<LivroModel>>> BuscarLivroPorIdAutor(int idAutor)
         {
-            throw new NotImplementedException();
+            ResponseModel<List<LivroModel>> resposta = new ResponseModel<List<LivroModel>>();
+
+            try
+            {
+                var livros = await _context.Livros.Include(a => a.Autor)
+                    .Where(livroBanco => livroBanco.Autor.Id == idAutor).ToListAsync();
+
+                if(livros is null)
+                {
+                    resposta.Mensagem = "Autor não localizado!";
+                    return resposta;
+                }
+
+                resposta.Dados = livros;
+                resposta.Mensagem = "Consulta realizada com Sucesso";
+                return resposta;
+
+            }
+            catch(Exception ex)
+            {
+                resposta.Mensagem = ex.Message;
+                resposta.Status = false;
+                return resposta;
+            }
         }
 
         public Task<ResponseModel<List<LivroModel>>> BuscarLivroPorId(int idLivro)
@@ -95,5 +118,6 @@ namespace WebApi.Services.Livros
                 return resposta;
             }
         }
+
     }
 }
