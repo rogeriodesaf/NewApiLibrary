@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Dto.Livro;
+using WebApi.Dto.Vinculo;
 using WebApi.Models;
 using WebApi.Services.Livros;
 
@@ -37,6 +38,28 @@ namespace WebApi.Controllers
         {
             var livro = await _livrointerface.BuscarLivroPorIdAutor(idAutor);
             return Ok(livro);
+        }
+
+        [HttpGet("BuscarLivroPorId/{idLivro}")]
+        public async Task<ActionResult<ResponseModel<LivroModel>>> BuscarLivroPorId(int idLivro)
+        {
+            var livro = await _livrointerface.BuscarLivroPorId(idLivro);
+            return Ok(livro);
+        }
+
+        [HttpDelete("ExcluirLivro/{idLivro}")]
+        public async Task<ActionResult<ResponseModel<List<LivroModel>>>> ExcluirLivro(int idLivro)
+        {
+            var livro = await _livrointerface.ExcluirLivro(idLivro);
+            return Ok(livro);
+
+        }
+
+        [HttpPut("EditarLivro")]
+        public async Task<ActionResult<ResponseModel<List<LivroModel>>>>EditarLivro(LivroEdicaoDto livroEdicaoDto)
+        {
+            var livros = await  _livrointerface.EditarLivro(livroEdicaoDto);
+            return Ok(livros);
         }
     }
 }

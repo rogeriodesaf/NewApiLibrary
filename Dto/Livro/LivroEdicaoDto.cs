@@ -1,4 +1,6 @@
-﻿using WebApi.Models;
+﻿using System.Text.Json.Serialization;
+using WebApi.Dto.Vinculo;
+using WebApi.Models;
 
 namespace WebApi.Dto.Livro
 {
@@ -7,7 +9,7 @@ namespace WebApi.Dto.Livro
         public int Id { get; set; }
         public string Titulo { get; set; }
 
-
-        public AutorModel Autor { get; set; }
+      
+        public AutorVinculoDto Autor { get; set; }
     }
 }

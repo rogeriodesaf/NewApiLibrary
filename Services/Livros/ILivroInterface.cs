@@ -1,4 +1,5 @@
 ﻿using WebApi.Dto.Livro;
+using WebApi.Dto.Vinculo;
 using WebApi.Models;
 
 namespace WebApi.Services.Livros
@@ -7,7 +8,7 @@ namespace WebApi.Services.Livros
     {
        Task<ResponseModel<List<LivroModel>>> ListarLivros();
 
-        Task<ResponseModel<List<LivroModel>>> BuscarLivroPorId(int idLivro);
+        Task<ResponseModel<LivroModel>> BuscarLivroPorId(int idLivro);
 
         Task<ResponseModel<List<LivroModel>>> BuscarLivroPorIdAutor(int idAutor);
 
@@ -16,5 +17,6 @@ namespace WebApi.Services.Livros
         Task<ResponseModel<List<LivroModel>>> EditarLivro(LivroEdicaoDto livroEdicaoDto);
 
         Task<ResponseModel<List<LivroModel>>> ExcluirLivro(int idLivro);
+        
     }
 }
